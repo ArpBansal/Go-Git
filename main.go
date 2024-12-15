@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"flag"
 	"fmt"
 	"log"
@@ -17,6 +18,17 @@ type GitRepository struct {
 	worktree string
 	gitdir   string
 	config   *ini.File
+}
+
+type GitObject interface {
+	Serialize(repo *GitRepository) (bytes.Buffer, error)
+	Deserialize(data bytes.Buffer) error
+	Init()
+	Format() string
+}
+
+type BaseGitObject struct {
+	data bytes.Buffer
 }
 
 func NewGitRepository(path string, force bool) (*GitRepository, error) {

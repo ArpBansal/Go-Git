@@ -1,6 +1,8 @@
 # GO-Git
 
-A Git implementation using GO.
+A simple Git implementation using GO.
+
+A slow side-project, completion may be around end of march.
 
 ## Required
 
